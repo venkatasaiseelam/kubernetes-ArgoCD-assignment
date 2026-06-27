@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
         - name: eliteapp
-          image: devops1117/eliteapp:v10
+          image: devops1117/eliteapp:v12
           ports:
             - containerPort: 80
