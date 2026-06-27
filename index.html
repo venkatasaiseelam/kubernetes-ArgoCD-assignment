@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteShop - Premium E-Commerce</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #222;
+            transition: 0.4s;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #00d4ff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00d4ff;
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-cart input {
+            padding: 10px 15px;
+            border-radius: 25px;
+            border: none;
+            width: 220px;
+            outline: none;
+        }
+
+        .cart-btn {
+            background: #00d4ff;
+            color: #111827;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: white;
+        }
+
+        /* HERO */
+
+        .hero {
+            height: 90vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.6),
+                    rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1920&auto=format&fit=crop');
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 65px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .shop-btn {
+            background: #00d4ff;
+            color: #111827;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .shop-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        /* FEATURES */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 60px;
+            background: white;
+        }
+
+        .feature-box {
+            background: #f9fafb;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-box h3 {
+            margin: 15px 0;
+        }
+
+        /* PRODUCTS */
+
+        .products-section {
+            padding: 70px 60px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #00a6c7;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: gold;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #111827;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .buy-btn:hover {
+            background: #00d4ff;
+            color: #111827;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter {
+            background: #111827;
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input {
+            padding: 15px;
+            width: 320px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            border: none;
+            background: #00d4ff;
+            color: #111827;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #0b1120;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:900px) {
+
+            header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero-content h1 {
+                font-size: 42px;
+            }
+
+            .products-section,
+            .features {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">Elite<span>Shop</span></div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="search-cart">
+            <input type="text" placeholder="Search products...">
+            <div class="cart-btn">🛒 Cart (0)</div>
+        </div>
+
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+            <h1>Premium Shopping Experience</h1>
+            <p>Discover luxury products with modern design and exclusive offers.</p>
+            <button class="shop-btn">Shop Now</button>
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <div class="feature-box">
+            <h3>🚚 Free Shipping</h3>
+            <p>Fast and secure delivery across the world.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>💳 Secure Payments</h3>
+            <p>100% protected payment gateway system.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>🎁 Exclusive Deals</h3>
+            <p>Special discounts and premium membership offers.</p>
+        </div>
+
+        <div class="feature-box">
+            <h3>📞 24/7 Support</h3>
+            <p>Dedicated support team available anytime.</p>
+        </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="products-section">
+
+        <div class="section-title">
+            <h2>Featured Products</h2>
+        </div>
+
+        <div class="products">
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
+                <div class="product-info">
+                    <h3>Premium Sneakers</h3>
+                    <div class="price">$149</div>
+                    <div class="rating">★★★★★</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop">
+                <div class="product-info">
+                    <h3>Luxury Watch</h3>
+                    <div class="price">$399</div>
+                    <div class="rating">★★★★★</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1200&auto=format&fit=crop">
+                <div class="product-info">
+                    <h3>Smartphone Pro</h3>
+                    <div class="price">$899</div>
+                    <div class="rating">★★★★★</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop">
+                <div class="product-info">
+                    <h3>Wireless Headphones</h3>
+                    <div class="price">$199</div>
+                    <div class="rating">★★★★★</div>
+                    <button class="buy-btn">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>Subscribe for Latest Offers</h2>
+
+        <p>Get updates about premium products and exclusive discounts.</p>
+
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email">
+            <button>Subscribe</button>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>© 2026 EliteShop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* ===============================
+           PRODUCT DATABASE
+        =============================== */
+
+        const products = [
+            {
+                id: 1,
+                name: "Premium Sneakers",
+                price: 149,
+                category: "fashion",
+                stock: 12
+            },
+            {
+                id: 2,
+                name: "Luxury Watch",
+                price: 399,
+                category: "accessories",
+                stock: 8
+            },
+            {
+                id: 3,
+                name: "Smartphone Pro",
+                price: 899,
+                category: "electronics",
+                stock: 15
+            },
+            {
+                id: 4,
+                name: "Wireless Headphones",
+                price: 199,
+                category: "electronics",
+                stock: 20
+            }
+        ];
+
+        let cart = JSON.parse(localStorage.getItem("elite_cart")) || [];
+
+        /* ===============================
+           INITIALIZATION
+        =============================== */
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            initializeButtons();
+            updateCartUI();
+            setupSearch();
+            setupNewsletter();
+            setupDarkMode();
+            showWelcomeMessage();
+            generateDynamicOffers();
+            setupInventory();
+
+        });
+
+        /* ===============================
+           CART LOGIC
+        =============================== */
+
+        function initializeButtons() {
+
+            const buttons = document.querySelectorAll(".buy-btn");
+
+            buttons.forEach((button, index) => {
+
+                button.addEventListener("click", () => {
+
+                    addToCart(products[index]);
+
+                });
+
+            });
+
+        }
+
+        function addToCart(product) {
+
+            if (product.stock <= 0) {
+
+                showNotification("❌ Out Of Stock", "error");
+                return;
+
+            }
+
+            const existing = cart.find(item => item.id === product.id);
+
+            if (existing) {
+
+                existing.quantity++;
+
+            } else {
+
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+
+            }
+
+            product.stock--;
+
+            localStorage.setItem("elite_cart",
+                JSON.stringify(cart));
+
+            updateCartUI();
+
+            showNotification(
+                `✅ ${product.name} Added To Cart`,
+                "success"
+            );
+
+        }
+
+        function updateCartUI() {
+
+            const cartBtn =
+                document.querySelector(".cart-btn");
+
+            const totalItems = cart.reduce((sum, item) => {
+
+                return sum + item.quantity;
+
+            }, 0);
+
+            cartBtn.innerHTML =
+                `🛒 Cart (${totalItems})`;
+
+        }
+
+        /* ===============================
+           SEARCH ENGINE
+        =============================== */
+
+        function setupSearch() {
+
+            const searchInput =
+                document.querySelector(".search-cart input");
+
+            searchInput.addEventListener("keyup", (e) => {
+
+                const value =
+                    e.target.value.toLowerCase();
+
+                const cards =
+                    document.querySelectorAll(".product-card");
+
+                cards.forEach((card, index) => {
+
+                    const productName =
+                        products[index].name.toLowerCase();
+
+                    if (productName.includes(value)) {
+
+                        card.style.display = "block";
+
+                    } else {
+
+                        card.style.display = "none";
+
+                    }
+
+                });
+
+            });
+
+        }
+
+        /* ===============================
+           NOTIFICATION SYSTEM
+        =============================== */
+
+        function showNotification(message, type) {
+
+            const notification =
+                document.createElement("div");
+
+            notification.innerText = message;
+
+            notification.style.position = "fixed";
+            notification.style.top = "30px";
+            notification.style.right = "30px";
+            notification.style.padding = "15px 25px";
+            notification.style.borderRadius = "10px";
+            notification.style.color = "white";
+            notification.style.fontWeight = "bold";
+            notification.style.zIndex = "9999";
+            notification.style.transition = "0.4s";
+
+            notification.style.background =
+                type === "success"
+                    ? "#16a34a"
+                    : "#dc2626";
+
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+
+                notification.style.opacity = "0";
+
+                setTimeout(() => {
+
+                    notification.remove();
+
+                }, 500);
+
+            }, 3000);
+
+        }
+
+        /* ===============================
+           NEWSLETTER
+        =============================== */
+
+        function setupNewsletter() {
+
+            const subscribeBtn =
+                document.querySelector(".newsletter-form button");
+
+            subscribeBtn.addEventListener("click", () => {
+
+                const emailInput =
+                    document.querySelector(".newsletter-form input");
+
+                const email = emailInput.value;
+
+                if (validateEmail(email)) {
+
+                    localStorage.setItem(
+                        "elite_newsletter",
+                        email
+                    );
+
+                    showNotification(
+                        "🎉 Subscription Successful",
+                        "success"
+                    );
+
+                    emailInput.value = "";
+
+                } else {
+
+                    showNotification(
+                        "❌ Invalid Email Address",
+                        "error"
+                    );
+
+                }
+
+            });
+
+        }
+
+        function validateEmail(email) {
+
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                .test(email);
+
+        }
+
+        /* ===============================
+           DARK MODE
+        =============================== */
+
+        function setupDarkMode() {
+
+            const button =
+                document.createElement("button");
+
+            button.innerHTML = "🌙";
+
+            button.style.position = "fixed";
+            button.style.bottom = "30px";
+            button.style.right = "30px";
+            button.style.width = "55px";
+            button.style.height = "55px";
+            button.style.borderRadius = "50%";
+            button.style.border = "none";
+            button.style.cursor = "pointer";
+            button.style.fontSize = "20px";
+            button.style.background = "#111827";
+            button.style.color = "white";
+            button.style.zIndex = "999";
+
+            document.body.appendChild(button);
+
+            let dark = false;
+
+            button.addEventListener("click", () => {
+
+                dark = !dark;
+
+                if (dark) {
+
+                    document.body.style.background =
+                        "#0f172a";
+
+                    document.body.style.color =
+                        "white";
+
+                    showNotification(
+                        "🌙 Dark Mode Enabled",
+                        "success"
+                    );
+
+                } else {
+
+                    document.body.style.background =
+                        "#f4f6f9";
+
+                    document.body.style.color =
+                        "#222";
+
+                    showNotification(
+                        "☀️ Light Mode Enabled",
+                        "success"
+                    );
+
+                }
+
+            });
+
+        }
+
+        /* ===============================
+           DYNAMIC OFFERS
+        =============================== */
+
+        function generateDynamicOffers() {
+
+            const hour =
+                new Date().getHours();
+
+            let offer = "";
+
+            if (hour < 12) {
+
+                offer =
+                    "☀️ Morning Offer: 10% OFF Electronics";
+
+            } else if (hour < 18) {
+
+                offer =
+                    "🔥 Flash Sale: Buy 2 Get 1 Free";
+
+            } else {
+
+                offer =
+                    "🌙 Night Sale: Free Shipping Above $200";
+
+            }
+
+            const bar =
+                document.createElement("div");
+
+            bar.innerText = offer;
+
+            bar.style.background = "#00d4ff";
+            bar.style.color = "#111827";
+            bar.style.padding = "12px";
+            bar.style.textAlign = "center";
+            bar.style.fontWeight = "bold";
+
+            document.body.prepend(bar);
+
+        }
+
+        /* ===============================
+           INVENTORY SYSTEM
+        =============================== */
+
+        function setupInventory() {
+
+            const cards =
+                document.querySelectorAll(".product-info");
+
+            cards.forEach((card, index) => {
+
+                const stock =
+                    document.createElement("p");
+
+                stock.style.marginTop = "10px";
+                stock.style.fontWeight = "bold";
+
+                stock.innerHTML =
+                    `✅ In Stock (${products[index].stock})`;
+
+                card.appendChild(stock);
+
+            });
+
+        }
+
+        /* ===============================
+           WELCOME MESSAGE
+        =============================== */
+
+        function showWelcomeMessage() {
+
+            setTimeout(() => {
+
+                showNotification(
+                    "👋 Welcome To EliteShop",
+                    "success"
+                );
+
+            }, 1000);
+
+        }
+
+    </script>
+
+</body>
+
+</html>
